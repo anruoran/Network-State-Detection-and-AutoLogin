@@ -17,7 +17,7 @@ while 1:
 		
     except:
 	
-		url = "网络登陆验证网址" # 如 https://10.108.255.12
+        url = "网络登陆验证网址" # 如 https://10.108.255.12
         username = "网络账号" # 此处输入网络认证账号
         password = "密码"     # 此处输入网络认证密码
 		
@@ -53,6 +53,7 @@ while 1:
         browser.close()
 
     else:
-        print("当前网络处于连通状态")
-	time.sleep(300) # 每隔一段时间检测一次当前网络连通性，该时间间隔可根据需要修改
+        date_time = time.asctime( time.localtime(time.time()) );
+        print("当前网络处于连通状态 " + date_time)
+    time.sleep(300) # 每隔一段时间检测一次当前网络连通性，该时间间隔可根据需要修改
 
