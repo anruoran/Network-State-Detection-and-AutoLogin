@@ -21,15 +21,16 @@ while 1:
         username = "网络账号" # 此处输入网络认证账号
         password = "密码"     # 此处输入网络认证密码
 		
-		# 关闭浏览器中的信息提示
+		# 关闭浏览器的信息提示，解决“Chrome正在收到自动测试软件的控制”遮蔽问题
         option = webdriver.ChromeOptions()
         option.add_argument('disable-infobars') 
         
         browser  = webdriver.Chrome(options=option)  #打开浏览器
-        #browser.maximize_window()  # 最大化浏览器
+        #browser.minimize_window()  # 最小化浏览器
         
         browser.get(url)
-        browser.implicitly_wait(10)  # 等待一段时间，避免被服务器拒绝
+        browser.implicitly_wait(10) 
+		# 等待网页加载完毕（隐式等待），避免因网页未加载完成查找不到所需元素出现异常
 		
         name_input = browser.find_element_by_id("loginname")  # 找到用户名的id
         pass_input = browser.find_element_by_id("password")  # 找到输入密码的id
@@ -43,14 +44,15 @@ while 1:
         time.sleep(0.2)
         login_button.click()            # 点击登录
         
-        time.sleep(0.2)
-        print(browser.get_cookies())
+        # time.sleep(0.2)
+        # print(browser.get_cookies())
         
         time.sleep(2)
         print(browser.title)
         
         browser.close()
+
     else:
         print("当前网络处于连通状态")
-	time.sleep(300) # 每隔5分钟检测一次当前网络连通性，该时间间隔可根据需要修改
+	time.sleep(300) # 每隔一段时间检测一次当前网络连通性，该时间间隔可根据需要修改
 
