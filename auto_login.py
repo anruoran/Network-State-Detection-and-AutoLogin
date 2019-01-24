@@ -8,29 +8,38 @@ Created on Wed Jan 23 20:40:17 2019
 import time
 import requests
 from selenium import webdriver
+
 while 1:
+
     try:
-        html = requests.get("http://www.baidu.com",timeout=2)
+	
+        html = requests.get("http://www.baidu.com",timeout=2)# 网络连通性测试
+		
     except:
-        username = "网络账号"
-        password = "密码"
+	
+		url = "网络登陆验证网址" # 如 https://10.108.255.12
+        username = "网络账号" # 此处输入网络认证账号
+        password = "密码"     # 此处输入网络认证密码
+		
+		# 关闭浏览器中的信息提示
         option = webdriver.ChromeOptions()
-        option.add_argument('disable-infobars')
+        option.add_argument('disable-infobars') 
         
         browser  = webdriver.Chrome(options=option)  #打开浏览器
-        #browser.maximize_window()  # 最大化浏览器  
-        url = "网络登陆验证网址" # 如 https://10.108.255.12
+        #browser.maximize_window()  # 最大化浏览器
+        
         browser.get(url)
-        browser.implicitly_wait(10)
+        browser.implicitly_wait(10)  # 等待一段时间，避免被服务器拒绝
+		
         name_input = browser.find_element_by_id("loginname")  # 找到用户名的id
         pass_input = browser.find_element_by_id("password")  # 找到输入密码的id
         login_button = browser.find_element_by_id("button")  # 找到登录按钮的id
         
-        #name_input.clear()
-        name_input.send_keys(username)  # 填写用户名
+        #name_input.clear()              # 清空用户名框中的已有信息 
+        name_input.send_keys(username)  # 填入用户名
         time.sleep(0.2)
-        #pass_input.clear()
-        pass_input.send_keys(password)  # 填写密码
+        #pass_input.clear()              # 清空密码框中的已有信息
+        pass_input.send_keys(password)  # 填入密码
         time.sleep(0.2)
         login_button.click()            # 点击登录
         
@@ -43,5 +52,5 @@ while 1:
         browser.close()
     else:
         print("当前网络处于连通状态")
-	time.sleep(300) # 每隔5分钟ping一次网络，检测网络连通性
+	time.sleep(300) # 每隔5分钟检测一次当前网络连通性，该时间间隔可根据需要修改
 
