@@ -1,6 +1,9 @@
 
 本程序仅适用于网页端网络认证。
 仅在windows平台测试过，Linux或Mac平台应该也适用。
+软件环境仅支持Python3版本，python的两种常见安装方法请访问如下网址：
+https://www.jianshu.com/p/7cbed2b32e45
+
 
 使用步骤：
 1. 安装第三方依赖库
