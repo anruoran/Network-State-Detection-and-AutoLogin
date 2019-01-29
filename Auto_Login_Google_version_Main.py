@@ -13,7 +13,7 @@ while 1:
 
     try:
 	
-        html = requests.get("http://www.baidu.com",timeout=2)# 网络连通性测试
+        html = requests.get("http://www.baidu.com", timeout=2)# 网络连通性测试
 		
     except:
 	
