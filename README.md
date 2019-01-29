@@ -7,9 +7,9 @@ https://www.jianshu.com/p/7cbed2b32e45
 使用步骤：
 1. 安装第三方依赖库
 2. 下载浏览器驱动放在Python根目录（即python.exe所在目录）下
-注：IE浏览器驱动可放在主程序所在目录下
-3. 打开主程序“Auto_Login_XX_version_Main.py”，填写登录信息
-4. 在python的命令行终端中运行 python ‘绝对路径’\Auto_Login_XX_version_Main.py.py
+3. 打开主程序“auto_login_google_version_main.py”，填写登录信息
+4. 断开当前网络进行自动登录测试
+5. 在python的命令行终端中运行 python ‘绝对路径’\auto_login_google_version_main.py
 （‘绝对路径’中填入存放主程序的路径名，或直接把主程序拖入命令行终端）
 
 依赖的第三方python库：time、requests和selenium。
