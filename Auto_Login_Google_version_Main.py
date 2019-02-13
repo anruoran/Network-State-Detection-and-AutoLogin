@@ -13,9 +13,16 @@ while 1:
 
     try:
 	
-        html = requests.get("http://www.baidu.com", timeout=2)# 网络连通性测试
+        html = requests.get("http://www.baidu.com", timeout=5)# 网络连通性测试
 		
-    except:
+    except (KeyboardInterrupt,SystemExit):
+    # SystemExit 是由于当前 Python 应用程序需要退出
+    # KeyboardInterupt 代表用户按下了 CTRL-C (^C) , 想要关闭 Python
+    
+        # user wangts to quit
+        raise # reraise back to caller
+            
+    except Exception: 
 	
         url = "网络登陆验证网址" # 如 https://10.108.255.12
         username = "网络账号" # 此处输入网络认证账号
@@ -42,7 +49,20 @@ while 1:
         #pass_input.clear()              # 清空密码框中的已有信息
         pass_input.send_keys(password)  # 填入密码
         time.sleep(0.2)
-        login_button.click()            # 点击登录
+
+        # 解决因网络连通性检测异常导致的非断网状态下登陆报错问题
+        try:
+        
+            login_button.click()            # 点击登录
+            
+        except (KeyboardInterrupt,SystemExit):
+        
+            # user wangts to quit
+            raise # reraise back to caller
+            
+        except Exception:
+        
+            print('非断网状态下异常登陆')
         
         # time.sleep(0.2)
         # print(browser.get_cookies())
